@@ -1,17 +1,21 @@
+require 'open3'
+
 module Middleman
   module Graphviz
     module Helpers
-      def basic_helper_example( param )
-        "<h1>#{param}</h1>".html_safe
-      end
-
-      def block_helper_example( type, &block )
+      def graphviz( &block )
         if block_given?
           data = capture_html(&block)
 
           data = data.upcase
+          out, err, status = Open3.capture3( "dot -Tsvg", stdin_data: data )
 
-          concat_content(data.html_safe)
+          # puts "Status = #{status}"
+          # puts err
+
+          svg = out.gsub( /.*<svg/m, "<svg" )
+
+          concat_content(svg.html_safe)
         end
       end
     end
