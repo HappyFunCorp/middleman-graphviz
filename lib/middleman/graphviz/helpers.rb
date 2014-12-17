@@ -7,13 +7,12 @@ module Middleman
         if block_given?
           data = capture_html(&block)
 
-          data = data.upcase
           out, err, status = Open3.capture3( "dot -Tsvg", stdin_data: data )
 
           # puts "Status = #{status}"
           # puts err
 
-          svg = out.gsub( /.*<svg/m, "<svg" )
+          svg = out.gsub( /.*<svg/m, "<svg" ).gsub( /\n/m, "")
 
           concat_content(svg.html_safe)
         end
