@@ -22,7 +22,7 @@ gem 'middleman-graphviz'
 
 And then execute:
 
-    $ bundle
+    $ bundle install
 
 Then activate the extenion in `config.rb`
 
