@@ -1,7 +1,9 @@
 # Middleman::Graphviz
 
-This middleman extention creates a helper which lets you embed svg graphs
+This middleman extension creates a helper which lets you embed svg graphs
 inside of your documents using the [dot language](http://www.graphviz.org/pdf/dotguide.pdf)
+
+It is confirmed to be compatible with Middleman 4.2, your mileage may vary with more recent versions.
 
 ## Installation
 
@@ -24,7 +26,7 @@ And then execute:
 
     $ bundle install
 
-Then activate the extenion in `config.rb`
+Then activate the extension in `config.rb`
 
 ```ruby
 activate :graphviz
